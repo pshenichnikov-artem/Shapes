@@ -1,0 +1,25 @@
+Пусть будет 3 таблицы со следующими полями
+	1. Products
+		ProductID (Primary Key, int) - идентификатор продукта
+		ProductName (varchar(255)) - название категории
+	2. Categories
+		CategoryID (Primary Key, int) - идентификатор категории
+		CategoryName (varchar(255)) — название категории
+	3. ProductCategories
+		ProductID (Foreign Key, int) — ссылается на ProductID из таблицы Products
+		CategoryID (Foreign Key, int) — ссылается на CategoryID из таблицы Categories
+		Пара ProductID и CategoryID - Primary Key
+
+
+SELECT 
+    p.ProductName AS Имя_продукта, 
+    c.CategoryName AS Имя_категории
+FROM 
+    Products p
+LEFT JOIN 
+    ProductCategories pc ON p.ProductID = pc.ProductID
+LEFT JOIN 
+    Categories c ON pc.CategoryID = c.CategoryID
+ORDER BY 
+    p.ProductName, 
+    c.CategoryName;
